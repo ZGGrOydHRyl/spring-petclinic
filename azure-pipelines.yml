@@ -1,5 +1,8 @@
 # Docker
 
+trigger:
+- main
+
 
 - task: Maven@4
   inputs:
@@ -17,11 +20,9 @@
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- main
-
 resources:
 - repo: self
+
 
 variables:
   # Container registry service connection established during pipeline creation
