@@ -15,38 +15,38 @@
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- main
+  trigger:
+  - main
 
-resources:
-- repo: self
+  resources:
+  - repo: self
 
-variables:
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '96db76c0-840f-411e-a507-c766d36ff7f9'
-  imageRepository: 'springpetclinic'
-  containerRegistry: 'fortfiytesting123.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/.devcontainer/Dockerfile'
-  tag: '$(Build.BuildId)'
+  variables:
+    # Container registry service connection established during pipeline creation
+    dockerRegistryServiceConnection: '96db76c0-840f-411e-a507-c766d36ff7f9'
+    imageRepository: 'springpetclinic'
+    containerRegistry: 'fortfiytesting123.azurecr.io'
+    dockerfilePath: '$(Build.SourcesDirectory)/.devcontainer/Dockerfile'
+    tag: '$(Build.BuildId)'
 
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+    # Agent VM image name
+    vmImageName: 'ubuntu-latest'
 
-stages:
-- stage: Build
-  displayName: Build and push stage
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
-    steps:
-    - task: Docker@2
-      displayName: Build and push an image to container registry
-      inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+  stages:
+  - stage: Build
+    displayName: Build and push stage
+    jobs:
+    - job: Build
+      displayName: Build
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+      - task: Docker@2
+        displayName: Build and push an image to container registry
+        inputs:
+          command: buildAndPush
+          repository: $(imageRepository)
+          dockerfile: $(dockerfilePath)
+          containerRegistry: $(dockerRegistryServiceConnection)
+          tags: |
+            $(tag)
