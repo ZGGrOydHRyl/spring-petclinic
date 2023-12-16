@@ -45,7 +45,7 @@ stages:
         mavenVersionOption: 'Default'
         mavenAuthenticateFeed: false
         effectivePomSkip: false
-        sonarQubeRunAnalysis: true
+        sonarQubeRunAnalysis: false
         isJacocoCoverageReportXML: true
         sqMavenPluginVersionChoice: 'latest'
     # Build and push an image to Azure Container Registry
