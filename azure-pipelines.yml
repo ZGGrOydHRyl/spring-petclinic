@@ -35,7 +35,6 @@ stages:
         jdkArchitectureOption: 'x64'
         jdkSourceOption: 'PreInstalled'
 
-
     - task: SonarQubePrepare@4
       displayName: Prepare Analysis Configuration task
       inputs:
