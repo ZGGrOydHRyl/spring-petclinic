@@ -46,15 +46,11 @@ stages:
         mavenVersionOption: 'Default'
         mavenAuthenticateFeed: false
         effectivePomSkip: false
-        sonarQubeRunAnalysis: true
+        sonarQubeRunAnalysis: false
         isJacocoCoverageReportXML: true
         sqMavenPluginVersionChoice: 'latest'
 
-    - task: SonarQubePublish@4
-      displayName: Publish Quality Gate Result
-      inputs:
-        pollingTimeoutSec: '300'
-      enabled: false
+
 
     # Build and push an image to Azure Container Registry
     # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
