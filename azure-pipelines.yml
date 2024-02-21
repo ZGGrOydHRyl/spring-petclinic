@@ -67,7 +67,7 @@ stages:
 
     # Build and push an image to Azure Container Registry
     # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-  - job: Build Docker Image
+  - job: BuildDockerImage
     displayName: Build Docker Image
     pool:
       vmImage: $(vmImageName)
