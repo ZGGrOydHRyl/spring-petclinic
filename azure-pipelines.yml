@@ -51,7 +51,7 @@ stages:
         isJacocoCoverageReportXML: true
         sqMavenPluginVersionChoice: 'latest'
 
- - job: waitForValidation
+  - job: waitForValidation
     displayName: Wait for external validation  
     pool: server    
     timeoutInMinutes: 4320 # job times out in 3 days
