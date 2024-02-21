@@ -51,6 +51,11 @@ stages:
         isJacocoCoverageReportXML: true
         sqMavenPluginVersionChoice: 'latest'
 
+ - job: waitForValidation
+    displayName: Wait for external validation  
+    pool: server    
+    timeoutInMinutes: 4320 # job times out in 3 days
+    steps:   
     - task: ManualValidation@0
       timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
@@ -62,6 +67,11 @@ stages:
 
     # Build and push an image to Azure Container Registry
     # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+  - job: Build Docker Image
+    displayName: Build Docker Image
+    pool:
+      vmImage: $(vmImageName)
+    steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
